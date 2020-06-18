@@ -1,5 +1,14 @@
 import axios from "axios";
+import { EventSearch } from "./EventSearch";
 
+export const buildRequestUrl = (baseUrl: string, event: EventSearch) => {
+  let url = baseUrl;
+  for (let [key, value] of Object.entries(event)) {
+    url += "&" + key + "=" + value;
+  }
+  console.log("url", url);
+  return url;
+};
 export const getEvents = async (
   url: string,
   setEvents: (events: any) => void
